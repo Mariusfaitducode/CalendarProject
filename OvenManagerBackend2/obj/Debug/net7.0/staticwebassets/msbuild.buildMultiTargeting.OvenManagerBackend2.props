@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OvenManagerBackend2.props" />
+</Project>

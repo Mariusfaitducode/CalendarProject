@@ -1,0 +1,36 @@
+
+
+<div class="height-selector">
+
+  <div>
+
+    <!-- <ion-title>Demandes utilisations étuves</ion-title> -->
+
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="gestionMode">
+        <ion-segment-button value="planning">
+          <div>Planning</div>
+        </ion-segment-button>
+        <ion-segment-button value="requests">
+          <div>Demandes</div>
+        </ion-segment-button>
+        <ion-segment-button value="library" *ngIf="user.admin">
+          <div>Bibliothèque</div>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </div>
+  
+   
+
+  <div class="height-selector">
+
+    <app-gestion-planning *ngIf="gestionMode === 'planning'" [inProgressOvens]="inProgressOvens" [freeOvens]="freeOvens" [ovenFilters]="ovenFilters" [entityFilter]="customizedFilters[0]"></app-gestion-planning>
+
+    <app-gestion-requests *ngIf="gestionMode === 'requests'" class="height-selector" [reservations]="reservations" [user]="user"></app-gestion-requests>
+
+    <app-gestion-test-library *ngIf="gestionMode === 'library'" [user]="user" [tests]="tests"></app-gestion-test-library>
+
+  </div>
+  
+</div>

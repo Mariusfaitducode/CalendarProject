@@ -1,0 +1,71 @@
+
+
+
+.filter-toggle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+
+.site-label{
+    font-size: 18px;
+    font-weight: 500;
+    // margin: 12px;
+    // padding-top: 20px;
+}
+
+.oven-select{
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    color: black;
+    cursor: pointer;
+
+}
+
+
+.oven-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.oven-content-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.oven-name{
+    font-size: 16px;
+    font-weight: 500;
+    // color: var(--ion-text-color);
+
+}
+
+.oven-color{
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    // background-color: var(--ion-color-step-600);
+    margin-right: 32px;
+}
+
+.ovens-folder-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px;
+
+}

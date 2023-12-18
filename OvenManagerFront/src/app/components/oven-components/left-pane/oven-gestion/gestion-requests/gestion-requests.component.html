@@ -1,0 +1,99 @@
+
+
+<div class="height-selector">
+
+  <div class="oven-list-request">
+
+    <div *ngFor="let req of reservations" >
+
+      <ion-card *ngIf="req.validated.value === 'await' && req.oven!.entity!.value === user.entity" class="reservation">
+        <div class="reservation-header" >
+          <div>
+            <div class="username">
+              {{req.username.value}}
+            </div>
+        
+            <div class="project-label">
+              <ion-label>{{req.project.value}}</ion-label>
+            </div>
+          </div>
+  
+          <div class="reservation-button">
+            <div class="button" (click)="acceptRequest(req)">
+              <ion-icon name="checkmark-outline" color="success" class="request-header-icon"></ion-icon>
+            </div>
+            <div class="button" (click)="refuseRequest(req)">
+              <ion-icon name="close-outline" color="danger" class="request-header-icon"></ion-icon>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <ion-label class="etuve-label" [style.color]="contrastColor(req.oven!.color)" [style.background]="req.oven!.color">{{req.oven!.name}}</ion-label>
+          <ion-label>le <b>{{req.startTime | date:'dd/MM/yyyy'}} à {{req.startTime | date:'HH:mm'}}</b>  pendant <b>{{req.duration.value}} heures</b> </ion-label>
+        </div>
+
+      </ion-card>
+      
+    </div>
+
+  </div>
+
+  <ion-modal [isOpen]="responseModal.show" (willDismiss)="onWillDismiss()" style="--width: 350px; --height: 350px;">
+    <ng-template >
+      <ion-header>
+        <ion-toolbar>
+          
+          <ion-title *ngIf="responseModal.validate">Valider demande</ion-title>
+          <ion-title *ngIf="!responseModal.validate">Refuser demande</ion-title>
+
+          <ion-button fill="icon-only" slot="end" (click)="onClose()">
+            <ion-icon size="large"  name="close"></ion-icon>
+          </ion-button>
+          
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content > 
+
+        <div class="response-content">
+          <div>
+            <div class="username row-padding">
+              {{responseModal.request!.username.value}}
+            </div>
+        
+            <div class="project-label row-padding">
+              <ion-label>{{responseModal.request!.project.value}}</ion-label>
+            </div>
+    
+            <div class="project-label row-padding">
+              <ion-label>{{responseModal.request!.description.value}}</ion-label>
+            </div>
+    
+            <div class="row-padding">
+              <ion-label class="etuve-label" [style.color]="contrastColor(responseModal.request!.oven!.color)" [style.background]="responseModal.request!.oven!.color">{{responseModal.request!.oven!.name}}</ion-label>
+              <ion-label>le <b>{{responseModal.request!.startTime | date:'dd/MM/yyyy'}} à {{responseModal.request!.startTime | date:'HH:mm'}}</b>  pendant <b>{{responseModal.request!.duration!.value}} heures</b> </ion-label>
+            </div>
+    
+            <ion-card>
+              <ion-item>
+
+                <!-- <ion-textarea label="Outline textarea" labelPlacement="floating" fill="outline" placeholder="Enter text"></ion-textarea> -->
+                
+                <!-- <ion-label labelPlacement="floating">Commentaire</ion-label> -->
+                <ion-textarea [(ngModel)]="comment" [autoGrow]="true"  label="Commentaire"  fill="outline" placeholder="Commentaire"></ion-textarea>
+
+              </ion-item>
+    
+            </ion-card>
+          </div>
+          <div>
+            <ion-button expand="block" (click)="sendResponse()" [disabled]="!canSendResponse()">Envoyer réponse</ion-button>
+          </div>
+        </div>
+
+      </ion-content>
+    </ng-template>
+
+  </ion-modal>
+</div>

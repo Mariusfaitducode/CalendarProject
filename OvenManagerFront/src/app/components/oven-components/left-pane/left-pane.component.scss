@@ -1,0 +1,41 @@
+
+
+.left-pane{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.left-pane-width
+{
+    width: calc(100% - 5px);
+}
+
+.left-pane-content{
+    height: calc(100% - 2 * 56px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.resize-handle {
+    // position: absolute;
+    // top: 0;
+    // right: -5px; /* Ajuste la position du handle par rapport au bord droit */
+    width: 5px;
+    height: 100%;
+    cursor: ew-resize; /* Curseur pour indiquer que la redimension est possible */
+    background-color: var(--ion-color-light-gray);
+  }
+
+.resize-handle:hover{
+    background-color: var(--ion-color-medium-gray);
+    transition: all 0.2s ease-in-out;
+}
+
+ion-segment-button{
+    width: 33%;
+}

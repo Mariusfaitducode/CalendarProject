@@ -1,0 +1,88 @@
+
+
+<div class="height-selector">
+
+  <div class="oven-list-request">
+
+    <div *ngFor="let test of tests" >
+
+      <div *ngIf="test.entity === user.entity">
+
+        <ion-card class="test-card" (click)="openModifyModal(test)">
+
+          <div class="test-header">
+            <div class="name">{{test.name}}</div>
+
+            <div class="name">
+              {{test.temperatureMin}} °C / {{test.temperatureMax}} °C
+            </div>
+
+          </div>
+
+          <ion-label>{{test.description}}</ion-label>
+        </ion-card>
+      </div>
+    </div>
+
+    <div class="add-button">
+      <ion-fab-button (click)="openAddModal()" shape="round" >
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </div>
+    
+
+  </div>
+
+  <ion-modal [isOpen]="addTestModal.show" (willDismiss)="onWillDismiss()" style="--width: 350px; --height: 380px;">
+    <ng-template >
+      <ion-header>
+        <ion-toolbar>
+          
+          <ion-title *ngIf="!modify">Ajouter test</ion-title>
+
+          <ion-title *ngIf="modify">Modifier test</ion-title>
+
+
+          <ion-button fill="icon-only" slot="end" (click)="onClose()">
+            <ion-icon size="large"  name="close"></ion-icon>
+          </ion-button>
+          
+        </ion-toolbar>
+      </ion-header>
+      
+      <ion-content class="ion-padding " > 
+
+        <div class="add-test-form">
+
+          <div>
+            <ion-item>
+              <ion-input type="text" label="Nom" [(ngModel)]="newTest.name" placeholder="Nom"></ion-input>
+            </ion-item>
+        
+            <ion-item class="description">
+              <ion-textarea fill="outline" label="Description" [(ngModel)]="newTest.description" labelPlacement="floating" placeholder="Description"></ion-textarea>
+            </ion-item>
+    
+            <ion-item>
+              <ion-input type="number" label="Température min" [(ngModel)]="newTest.temperatureMin" placeholder="Température min"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="number" label="Température max" [(ngModel)]="newTest.temperatureMax" placeholder="Température max"></ion-input>
+            </ion-item>
+          </div>
+          
+
+          <ion-button *ngIf="!modify" expand="block" [disabled]="!canAddTest()" (click)="addNewTest()">Ajouter test</ion-button>
+
+          <div *ngIf="modify" class="modify-buttons">
+            <ion-button expand="block" [disabled]="!canAddTest()" (click)="modifyTest()">Modifier test</ion-button>
+            <ion-button fill="outline" expand="block" (click)="deleteTest()">Supprimer test</ion-button>
+          </div>
+        </div>
+
+      </ion-content>
+    </ng-template>
+
+  </ion-modal>
+</div>
+

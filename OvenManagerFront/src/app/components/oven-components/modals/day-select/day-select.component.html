@@ -1,0 +1,39 @@
+
+
+<ion-modal [isOpen]="daySelectModal.show" (willDismiss)="onWillDismiss()" style="--width: 350px; --height: 400px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-title>{{formatDateToCustomString()}}</ion-title>
+
+        
+            <ion-button fill="icon-only" slot="end" (click)="onClose()">
+              <ion-icon size="large"  name="close"></ion-icon>
+            </ion-button>
+        
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="ion-padding">
+      <div class="modal-content">
+
+        <div>
+          <ion-row>
+            <div>
+              Etuves used : {{daySelectModal.events.length}}
+            </div>
+          </ion-row>
+
+        </div>
+        
+  
+        <ion-button>
+          Réserver un créneau
+        </ion-button>
+
+      </div>
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>

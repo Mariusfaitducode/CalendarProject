@@ -1,0 +1,60 @@
+
+
+<div class="right-pane">
+
+    <ion-toolbar >
+
+        <div class="toolbar-row">
+    
+        <ion-row class="filters-row">
+            <ion-label class="filter-label">Filtres :</ion-label>
+    
+            <!-- CustomizedFilters -->
+            <div *ngFor="let filter of customizedFilters" >
+                <ion-chip *ngIf="filter.automatic" class="chip-filter auto" [ngClass]="{'active' : filter.active}" (click)="filter.active = !filter.active">
+                    <ion-label >{{filter.name}}</ion-label>
+                    <!-- <ion-icon class="close-filter" name="close-outline" (click)="removeCustomizedFilter(filter)"></ion-icon> -->
+                </ion-chip>
+            </div>
+
+            
+
+            <div *ngFor="let filter of customizedFilters" >
+                <ion-chip class="custom-filter" *ngIf="!filter.automatic" class="chip-filter custom" [ngClass]="{'active' : filter.active}" (click)="openModifyFilter(filter)">
+                    <ion-label  >{{filter.name}}</ion-label>
+                    <ion-icon class="close-filter" name="close-outline" (click)="removeCustomizedFilter(filter)"></ion-icon>
+                </ion-chip>
+            </div>
+
+            <div (click)="openAddFilterModal()" class="add-filter-button">
+                <!-- <ion-label>Add</ion-label> -->
+                <ion-icon name="add" ></ion-icon>
+            </div>
+        
+            <!-- OvenFilters -->
+            <ion-chip (click)="openOvenModal()" *ngFor="let filter of ovenFilters" class="chip" [style.background]="filter.color" [style.color]="contrastColor(filter.color)">
+                <ion-label>{{filter.name}}</ion-label>
+                <ion-icon class="close-filter" name="close-outline" (click)="removeFilter(filter)" [style.color]="contrastColor(filter.color)"></ion-icon>
+            </ion-chip>
+        </ion-row>
+    
+        </div>
+    </ion-toolbar>
+
+
+
+    <app-oven-calendar 
+        [calendar]="calendar" 
+        [reservations]="reservations" 
+        [request]="request" 
+        [filters]="{ovenFilters, customizedFilters}" 
+        [leftPaneMode]="leftPaneMode"
+        [user]="user"
+        class="height-calendar"
+    ></app-oven-calendar>
+    
+</div>
+
+<app-add-filter [filterModal]="filterModal" [newFilter]="newFilter" [ovens]="ovens" [reservations]="reservations" [customizedFilters]="customizedFilters"></app-add-filter>
+
+<!-- <app-oven-select [ovens]="ovens" [filterModal]="filterModal" [newFilter]="newFilter"></app-oven-select> -->

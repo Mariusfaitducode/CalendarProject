@@ -1,0 +1,132 @@
+
+
+<ion-modal [isOpen]="eventSelectModal.show" (willDismiss)="onWillDismiss()" style="--width: 500px; --height: 500px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-title>Réservation {{event.startTime | date:'dd/MM/yyyy HH:mm'}}</ion-title>
+
+        <ion-button *ngIf="admin && !modify" fill="clear" slot="secondary" color="dark" (click)="modifyEvent()">
+          <!-- <ion-icon class="modify-icon" name="pencil-outline"></ion-icon> -->
+          modifier
+        </ion-button>
+        <ion-button *ngIf="admin && modify" fill="clear" slot="secondary" color="dark" (click)="modifyEvent()">
+          <!-- <ion-icon class="modify-icon" name="pencil-outline"></ion-icon> -->
+          annuler
+        </ion-button>
+        <ion-button fill="icon-only" slot="end" (click)="onClose()">
+          <ion-icon size="large"  name="close"></ion-icon>
+        </ion-button>
+        
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="ion-padding">
+      <div class="oven-infos">
+
+
+        <ion-row class="oven-label-row">
+
+          <ion-label color="primary" class="label-size">Etuve</ion-label>
+          <div class="etuve-label" (click)="openOvenModal()" 
+          [style.color]="contrastColor(event.oven.color)" [style.background]="event.oven.color">
+            {{event.oven.name}}
+          </div>
+          <!-- <ion-label >{{responseModal.request.oven.name}}</ion-label> -->
+        </ion-row>
+        
+        <ion-row class="infos-row">
+          <div>
+            Site : {{event.oven.site.value}}
+          </div>
+          <div>
+            Localisation : {{event.oven.localisation.value}}
+          </div>
+        </ion-row>
+        <ion-row class="infos-row">
+          <div>
+            Unité : {{event.oven.entity.value}}
+          </div>
+          <div>
+            Centre : {{event.oven.centre.value}}
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row padding-bottom">
+          <div>
+            {{event.oven.responsable.name}} : {{event.oven.responsable.value}}
+          </div>
+          <div>
+            {{event.oven.tel.name}} : {{event.oven.tel.value}}
+          </div>
+        </ion-row>
+
+        <!-- <ion-label color="primary">Informations</ion-label> -->
+
+        <ion-label color="primary" class="floating-label">Réservation</ion-label>
+
+        <ion-row class="infos-row">
+          <div>
+            Project : {{event.project.value}} 
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Utilisateur : {{event.username.value}} 
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Description : {{event.description.value}} 
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Date de départ : {{event.startTime | date:'dd/MM/yyyy HH:mm'}}
+          </div>
+          <div>
+            Date de fin : {{event.endTime | date:'dd/MM/yyyy HH:mm'}}
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row" *ngIf="event.temperatureMin && event.temperatureMax">
+          <div>
+            Température min : {{event.temperatureMin.value}} °C
+          </div>
+          <div>
+            Température max : {{event.temperatureMax.value}} °C
+
+          </div>
+        </ion-row>
+
+        
+
+      </div>
+      <div *ngIf="modify">
+
+        <ion-button (click)="sendModification()" expand="block">
+          Send modification
+        </ion-button>
+        
+
+      </div>
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+<!-- <app-oven-select 
+  [showModal]="ovenSelectModal.show" 
+  [oven]="ovenSelectModal.oven" 
+  [ovenFilters]="ovenFilters"
+
+  (requestOven)="askRequestOven($event)"
+  
+  
+  >
+</app-oven-select> -->

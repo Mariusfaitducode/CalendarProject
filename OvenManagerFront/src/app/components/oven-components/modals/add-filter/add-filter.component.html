@@ -1,0 +1,144 @@
+
+
+
+<ion-modal [isOpen]="filterModal.show" (willDismiss)="onWillDismiss()" style="--width: 500px; --height: 500px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-title *ngIf="!filterModal.modify">Add filter</ion-title>
+
+        <ion-title *ngIf="filterModal.modify">Modify filter</ion-title>
+
+
+        <ion-button fill="icon-only" slot="end" (click)="onClose()">
+          <ion-icon size="large"  name="close"></ion-icon>
+        </ion-button>
+        
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="ion-padding">
+      <div class="oven-infos">
+
+        <ion-item class="name-filter">
+          <ion-label>Nom</ion-label>
+          <ion-input [(ngModel)]="newFilter.name" placeholder="Nom du filtre"></ion-input>
+
+        </ion-item>
+
+
+        <div *ngFor="let filter of newFilter.filters; let i = index">
+
+          <ion-label *ngIf="i === 0" color="primary" class="floating-label">Ajouter</ion-label>
+          <ion-label *ngIf="i === 1" color="primary" class="floating-label">Filtres</ion-label>
+
+          <ion-card  class="row-selection">
+
+            <div  class="filters-row">
+
+              <ion-item class="filter-select">
+                <!-- <ion-label>Type</ion-label> -->
+                <ion-select [(ngModel)]="filter.type" placeholder="Type du filtre" (ionChange)="setFilterType(filter)">
+                  <ion-select-option value="oven">Etuves</ion-select-option>
+                  <ion-select-option value="reservation">Reservations</ion-select-option>
+                </ion-select>
+              </ion-item>
+    
+              <ion-item *ngIf="filter.type === 'oven'" class="filter-select">
+                <!-- <ion-label>Filtre</ion-label> -->
+                <ion-select [(ngModel)]="filter.key" placeholder="Choisir filtre" (ionChange)="getFilterValue(filter)">
+                  <ion-select-option value="site">Site</ion-select-option>
+                  <ion-select-option value="localisation">Localisation</ion-select-option>
+                  <ion-select-option value="entity">Unité</ion-select-option>
+                  <ion-select-option value="responsable">Responsable</ion-select-option>
+                  <ion-select-option value="tolerance">Tolérance</ion-select-option>
+                  <ion-select-option value="temperature">Température</ion-select-option>
+                  <ion-select-option value="humidity">Humidité</ion-select-option>
+                  <ion-select-option value="heatingSpeed">Vitesse de chauffage (K/min)</ion-select-option>
+                  <ion-select-option value="coolingSpeed">Vitesse de refroidissement (K/min)</ion-select-option>
+                  <ion-select-option value="volume">Volume</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <ion-item *ngIf="filter.type === 'reservation'" class="filter-select">
+                <!-- <ion-label>Filtre</ion-label> -->
+                <ion-select [(ngModel)]="filter.key" placeholder="Valeurs filtre" (ionChange)="getFilterValue(filter)">
+                  <ion-select-option value="validated">Validé</ion-select-option>
+                  <ion-select-option value="test">Test</ion-select-option>
+                  <ion-select-option value="username">Utilisateur</ion-select-option>
+                  <ion-select-option value="entity">Entité</ion-select-option>
+                  <ion-select-option value="duration">Durée</ion-select-option>
+                </ion-select>
+              </ion-item>
+    
+              <ion-item *ngIf="filter.key != ''" class="filter-select">
+                <!-- <ion-label>Valeur</ion-label> -->
+                <ion-select [(ngModel)]="filter.values" multiple="true" placeholder="Choisir filtre" (ionChange)="getOvensSelection(filter)">
+                  <ion-select-option *ngFor="let val of filter.keyValueList">{{val}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+    
+              
+  
+            </div>
+  
+            <div *ngIf="canAddSubFilter(filter)" fill="icon-only" size="large"
+                 (click)="addSubFilter()" class="add-filter-button">
+  
+                <ion-icon *ngIf="i === 0" name="add"></ion-icon>
+  
+              </div>
+
+              <div *ngIf="i !== 0" fill="icon-only" size="large"
+                 (click)="removeSubFilter(i)" class="add-filter-button">
+
+                <ion-icon name="close-outline"></ion-icon>
+  
+              </div>
+
+          </ion-card>
+
+          
+          
+       
+        </div>
+
+
+        <ion-row class="infos-row">
+          <ion-label color="primary">Nombres de réservations trouvés : {{newFilter.list.length}}</ion-label>
+
+          <!-- <div *ngFor="let oven of this.filterModal.list">
+            {{oven.name}}
+          </div> -->
+        </ion-row>
+
+      </div>
+
+      <ion-button *ngIf="!filterModal.modify" (click)="addFilter()" [disabled]="!canAddFilter()" expand="block">
+        Ajouter filtre
+      </ion-button>
+
+      <ion-row *ngIf="filterModal.modify">
+
+        <ion-button *ngIf="newFilter.active" (click)="switchActivationFilter()" expand="block">
+          Désactiver
+        </ion-button>
+        
+        <ion-button *ngIf="!newFilter.active" (click)="switchActivationFilter()" expand="block">
+          Activer
+        </ion-button>
+
+        <ion-button  (click)="modifyFilter()" [disabled]="!canModifyFilter()" expand="block">
+          Appliquer modification
+        </ion-button>
+
+        <ion-button fill="outline" *ngIf="!newFilter.active" (click)="removeFilter()" expand="block">
+          Supprimer
+        </ion-button>
+      
+      </ion-row>
+     
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>

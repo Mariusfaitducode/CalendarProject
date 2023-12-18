@@ -1,0 +1,98 @@
+
+
+<ion-modal [isOpen]="ovenSelectModal.show" (willDismiss)="onWillDismiss()" style="--width: 450px; --height: 500px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-title>Nouvelle étuve</ion-title>
+
+        <ion-button fill="icon-only" slot="end" (click)="onClose()">
+          <ion-icon size="large"  name="close"></ion-icon>
+        </ion-button>
+        
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="ion-padding">
+      <div class="oven-infos">
+
+        <ion-label color="primary">Informations</ion-label>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Nom" [(ngModel)]="newOven.name" placeholder="Nom"></ion-input>
+        </ion-row>
+
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Site" [(ngModel)]="newOven.site" placeholder="Site"></ion-input>
+          <ion-input type="text" label="Localisation" [(ngModel)]="newOven.localisation" placeholder="Localisation"></ion-input>
+
+          
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <ion-input type="text" label="Unité" [(ngModel)]="newOven.entity" placeholder="Unité"></ion-input>
+          <ion-input type="text" label="Centre" [(ngModel)]="newOven.centre" placeholder="Centre"></ion-input>
+        </ion-row>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Responsable" [(ngModel)]="newOven.responsable" placeholder="Responsable"></ion-input>
+          <ion-input type="text" label="Tel" [(ngModel)]="newOven.tel" placeholder="Tel"></ion-input>
+
+        </ion-row>
+      </div>
+
+      <!-- <div class="oven-characteristic">
+
+        <ion-label color="primary">Caractéristique</ion-label>
+
+        <ion-row class="infos-row">
+          
+          <ion-input type="text" label="Tolérance" [(ngModel)]="newOven.tolerance" placeholder="Tolérance"></ion-input>
+
+        </ion-row>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Température" [(ngModel)]="newOven.temperature" placeholder="Température"></ion-input>
+         
+        </ion-row>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Humidité" [(ngModel)]="newOven.humidity" placeholder="Humidité"></ion-input>
+        </ion-row>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Vitesse de chauffage" [(ngModel)]="newOven.heatingSpeed" placeholder="Vitesse de chauffage"></ion-input>
+
+        </ion-row>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Vitesse de refroidissement" [(ngModel)]="newOven.coolingSpeed" placeholder="Vitesse de refroidissement"></ion-input>
+
+        </ion-row>
+
+        <ion-row class="infos-row">
+
+          <ion-input type="text" label="Volume" [(ngModel)]="newOven.volume" placeholder="Volume"></ion-input>
+
+        </ion-row>
+
+      </div> -->
+
+      
+      <ion-button (click)="addOven()" [disabled]="!canSendOven()" expand="block">
+        Ajouter étuve
+      </ion-button>
+      
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>

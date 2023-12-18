@@ -1,0 +1,72 @@
+
+
+
+<div class="left-pane">
+  <div class="left-pane-width">
+    <ion-toolbar>
+      
+      <ion-segment [(ngModel)]="leftPaneMode">
+        <ion-segment-button value="select">
+          <div>Selection</div>
+        </ion-segment-button>
+        <ion-segment-button value="request">
+          <div>Request</div>
+        </ion-segment-button>
+        <ion-segment-button value="gestion" *ngIf="user.admin">
+          <div>Gestion</div>
+        </ion-segment-button>
+
+      </ion-segment>
+    </ion-toolbar>
+
+  
+    <div class="left-pane-content">
+      <app-oven-selector 
+        *ngIf="leftPaneMode === 'select'" 
+        class="height-selector" 
+        [classifiedOvens]="classifiedOvens" 
+        [results]="classifiedOvens" 
+        [ovens]="ovens" 
+        [ovenFilters]="ovenFilters" 
+        [user]="user"
+        
+        (requestOven)="askRequestOven($event)"
+        >
+      </app-oven-selector>
+    
+      <app-oven-request 
+        *ngIf="leftPaneMode === 'request'" 
+        class="height-selector" 
+        [ovens]="ovens" 
+        
+        [user]="user" 
+        [tests]="tests"
+
+        [request]="request">
+      </app-oven-request> 
+     
+      
+      <app-oven-gestion 
+        *ngIf="leftPaneMode === 'gestion'" 
+        class="height-selector" 
+        [ovens]="ovens" 
+        [user]="user" 
+        [ovenFilters]="ovenFilters"
+        [customizedFilters]="customizedFilters"
+        [tests]="tests"
+          
+        [reservations]="reservations">
+      </app-oven-gestion>
+
+    </div>
+
+  </div>
+  
+
+  <div class="resize-handle" id="resizeHandle"></div>
+</div>
+
+  
+
+
+

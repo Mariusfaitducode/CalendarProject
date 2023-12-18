@@ -1,0 +1,60 @@
+
+
+
+.fast-form-toggle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+
+
+.oven-request-title{
+    padding: 16px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    // color: var(--ion-color-step-600);
+    border-bottom: 1px solid var(--ion-color-light-gray);
+}
+
+.oven-list-request{
+    padding: 0px;
+
+    height: 100%;
+    // overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // align-items: center;
+}
+
+
+.top-gap{
+    height: 8px;
+}
+
+.floating-label{
+    font-size: 14px;
+    // margin-top: 8px;
+    padding-left: 16px;
+    // margin-top: 8px;
+
+}
+
+.oven-form-request{
+    padding: 0px;
+    overflow-y: scroll;
+}
+
+
+.reservation-button{
+    padding: 16px 32px;
+    
+    border-top: 1px solid var(--ion-color-light-gray);
+}
+
+
+
+

@@ -1,0 +1,160 @@
+
+
+<ion-modal [isOpen]="ovenSelectModal.show" (willDismiss)="onWillDismiss()" style="--width: 450px; --height: 600px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-title>{{oven.name}}</ion-title>
+
+
+        <ion-button *ngIf="admin && !modify" fill="clear" slot="secondary" color="dark" (click)="modifyOven()">
+          <!-- <ion-icon class="modify-icon" name="pencil-outline"></ion-icon> -->
+          modifier
+        </ion-button>
+        <ion-button *ngIf="admin && modify" fill="clear" slot="secondary" color="dark" (click)="modifyOven()">
+          <!-- <ion-icon class="modify-icon" name="pencil-outline"></ion-icon> -->
+          annuler
+        </ion-button>
+
+        <ion-button fill="icon-only" slot="primary" (click)="onClose()">
+          <ion-icon size="large"  name="close"></ion-icon>
+        </ion-button>
+        
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="ion-padding">
+      <div class="oven-infos">
+
+        <ion-label color="primary" class="floating-label">Informations</ion-label>
+
+        <ion-row class="infos-row">
+          <div >
+            Site : {{oven.site!.value}}
+          </div>
+          <div>
+            {{oven.localisation!.value}}
+          </div>
+        </ion-row>
+
+        <!-- Modification -->
+
+        <!-- <ion-row class="infos-row" *ngIf="!modify">
+          <div >
+            Site : {{oven.site.value}}
+          </div>
+          <div>
+            {{oven.localisation.value}}
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row" *ngIf="modify">
+          <ion-label>Site</ion-label>
+          <ion-select [(ngModel)]="oven.site.value">
+            <ion-select-option *ngFor="let site of [1,2,3]" [value]="site">{{site}}</ion-select-option>
+          </ion-select>
+        </ion-row> -->
+
+        <ion-row class="infos-row">
+          <div>
+            Unité : {{oven.entity!.value}}
+          </div>
+          <div>
+            Centre : {{oven.centre!.value}}
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            {{oven.responsable!.name}} : {{oven.responsable!.value}}
+          </div>
+          <div>
+            {{oven.tel!.name}} : {{oven.tel!.value}}
+          </div>
+        </ion-row>
+      </div>
+
+      <div class="oven-characteristic">
+
+        <ion-label color="primary" class="floating-label">Caractéristique</ion-label>
+
+        <ion-row class="infos-row">
+          <div>
+            Tolérance :
+          </div>
+          <div>
+            {{oven.tolerance!.value}}
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Température (°C) : 
+          </div>
+          <div>
+            {{oven.temperature!.value}}
+          </div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Humidité (HR) : 
+          </div>
+          <div>{{oven.humidity!.value}}</div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Vitesse de chauffage (K/min) : 
+          </div>
+          <div>{{oven.heatingSpeed!.value}}</div>
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Vitesse de refroidissement (K/min): 
+          </div>
+          <div>{{oven.coolingSpeed!.value}}</div>
+
+        </ion-row>
+
+        <ion-row class="infos-row">
+          <div>
+            Volume:
+          </div>
+          <div> {{oven.volume!.value}}</div>
+        </ion-row>
+
+      </div>
+
+
+      
+      <ion-row class="oven-buttons" *ngIf="!modify">
+
+        <ion-button (click)="ovenSelectFilter()">
+          Voir planning
+        </ion-button>
+        <ion-button *ngIf="!admin" (click)="askRequestOven()">
+          Réserver un créneau
+        </ion-button>
+        <ion-button *ngIf="admin">
+          Ajouter un créneau
+        </ion-button>
+
+      </ion-row>
+
+      <div *ngIf="modify">
+
+        <ion-button (click)="sendModification()" expand="block">
+          Send modification
+        </ion-button>
+        
+
+      </div>
+  
+        
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>

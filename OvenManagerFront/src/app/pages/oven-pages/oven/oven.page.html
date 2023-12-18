@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Oven Manager {{leftPaneMode}}
+    </ion-title>
+
+    <div slot="end" class="user-infos">
+
+      <!-- <ion-button (click)="testMessage()">
+        test message
+      </ion-button> -->
+
+      <!-- <ion-label>
+        {{this.user.login}}
+      </ion-label> -->
+      <!-- <ion-item lines="none" class="user-info" *ngFor="let account of getAllAccounts()">
+        <ion-avatar slot="start">
+          <img [src]="'https://ged.sonceboz.com/_layouts/15/userphoto.aspx?size=S&username='+account.username">
+        </ion-avatar>
+        <ion-label>
+          <div>{{account.name}}</div>
+          <p>{{account.username}}</p>
+        </ion-label>
+      </ion-item> -->
+
+      <!-- <ion-button  *ngIf="!(getAllAccounts().length > 0) && blockState!=='loading'" fill="icon-only" size="large"  (click)="login()">
+        <ion-icon name="log-in-outline" size="large"></ion-icon>
+      </ion-button>
+
+      <ion-button  *ngIf="(getAllAccounts().length > 0) && blockState!=='loading'" fill="icon-only" size="large"  (click)="logout()">
+        <ion-icon name="log-out-outline" size="large"></ion-icon>
+      </ion-button> -->
+
+    </div>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+
+  <div class="home-container">
+      
+    <app-left-pane 
+      [classifiedOvens]="classifiedOvens" 
+      [ovens]="ovens" 
+      [ovenFilters]="ovenFilters" 
+      [customizedFilters]="customizedFilters"
+      [user]="user" 
+      [reservations]="reservations" 
+      [tests]="tests"
+      [request]="request"
+      [leftPaneMode]="leftPaneMode"
+
+      class="left-pane" 
+      id="leftPane"
+      >
+    </app-left-pane>
+
+    <app-right-pane 
+      [ovens]="ovens"
+      [reservations]="reservations" 
+      [jobList]="jobList" 
+      [ovenFilters]="ovenFilters" 
+      [customizedFilters]="customizedFilters"
+      [user]="user"
+      [request]="request"
+      [leftPaneMode]="leftPaneMode"
+
+
+      class="right-pane" 
+      id="rightPane"
+      >
+    </app-right-pane>
+  </div>
+
+</ion-content>
+
+

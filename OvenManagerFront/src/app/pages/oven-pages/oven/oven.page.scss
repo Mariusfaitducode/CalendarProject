@@ -1,0 +1,35 @@
+
+
+.home-container{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    // overflow: hidden;
+  }
+  
+  
+  .user-infos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .left-pane{
+    width: 30%;
+    height: 100%;
+    border: 1px solid var(--ion-color-light);
+  }
+  
+  
+  
+  .right-pane{
+    width: 70%;
+    height: 100%;
+    border: 1px solid var(--ion-color-light);
+  }

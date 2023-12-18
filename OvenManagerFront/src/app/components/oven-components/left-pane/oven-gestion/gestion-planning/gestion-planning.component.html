@@ -1,0 +1,65 @@
+
+
+
+<div class="height-selector">
+
+  <div>
+
+    <div class="filter-toggle">
+      <ion-label>Activer filtre</ion-label>
+      <ion-toggle [(ngModel)]="entityFilter.active"></ion-toggle>
+    </div>
+
+
+    <ion-row class="ovens-folder-label" *ngIf="inProgressOvens.length > 0">
+      <ion-label class="site-label">En cours</ion-label>
+    </ion-row>
+
+    <ion-card *ngFor="let inProgress of inProgressOvens" class="oven-select" (click)="selectOven(inProgress.oven)">
+
+      <!-- <ion-row class="oven-content"> -->
+        <div class="oven-color" [style.background]="inProgress.oven.color"></div>
+
+        <div class="oven-content-text">
+          <ion-label class="oven-name">{{inProgress.oven.name}}</ion-label>
+
+          <ion-label>{{inProgress.reservation.username.value}} - {{inProgress.reservation.project.value}}</ion-label>
+        </div>
+      <!-- </ion-row> -->
+      
+      <!-- <ion-checkbox [(ngModel)]="oven.selected" (ionChange)="ovenSelectFilter(oven, $event)"></ion-checkbox> -->
+    </ion-card>
+  </div>
+
+  <div>
+    <ion-row class="ovens-folder-label" *ngIf="freeOvens.length > 0">
+      <ion-label class="site-label">Arrêté</ion-label>
+    </ion-row>
+
+    <ion-card *ngFor="let freeOvens of freeOvens" class="oven-select" (click)="selectOven(freeOvens.oven)">
+
+      <ion-row class="oven-content">
+        <div class="oven-color" [style.background]="freeOvens.oven.color"></div>
+
+        <div>
+
+          <div class="oven-content-text">
+            
+          <ion-label class="oven-name">{{freeOvens.oven.name}}</ion-label>
+          <ion-label *ngIf="freeOvens.reservation">Prochaine utilisation : {{freeOvens.reservation?.startTime| date:'dd/MM/yyyy'}}</ion-label>
+          <ion-label *ngIf="!freeOvens.reservation">Aucune utilisation planifiée</ion-label>
+
+          </div>
+
+        </div>
+
+      </ion-row>
+      
+      <!-- <ion-checkbox [(ngModel)]="oven.selected" (ionChange)="ovenSelectFilter(oven, $event)"></ion-checkbox> -->
+    </ion-card>
+  </div>
+
+</div>
+
+<app-oven-select [ovenSelectModal]="ovenSelectModal" [oven]="ovenSelectModal.oven" [admin]="true" [ovenFilters]="ovenFilters"></app-oven-select>
+

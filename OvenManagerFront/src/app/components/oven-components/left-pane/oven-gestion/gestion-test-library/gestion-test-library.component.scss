@@ -1,0 +1,57 @@
+
+
+
+
+.test-card{
+    padding: 8px;
+
+    color: black;
+
+    cursor: pointer;
+}
+
+.test-header{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4px;
+}
+
+.name{
+    font-size: 16px;
+    font-weight: 500;
+    // color: var(--ion-text-color);
+
+}
+
+.add-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: 8px;
+
+}
+
+
+//Modal
+
+
+
+
+.add-test-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    height: 100%;
+}
+
+.modify-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

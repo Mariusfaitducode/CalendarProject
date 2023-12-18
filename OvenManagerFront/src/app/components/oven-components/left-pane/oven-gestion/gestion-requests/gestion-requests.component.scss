@@ -1,0 +1,118 @@
+
+
+.oven-list-request{
+    padding: 0px;
+
+    height: 100%;
+    overflow-y: scroll;
+
+    // align-items: center;
+}
+
+.oven-request-title{
+    padding: 16px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    // color: var(--ion-color-step-600);
+    border-bottom: 1px solid var(--ion-color-light-gray);
+}
+
+
+
+//admin page
+
+
+.username{
+    font-size: 16px;
+    font-weight: 500;
+    // color: var(--ion-text-color);
+
+}
+
+.project-label{
+    font-size: 16px;
+    // font-weight: 500;
+    // color: var(--ion-text-color);
+}
+
+
+.reservation{
+    padding: 8px;
+
+    color: black;
+}
+
+.reservation-header{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 4px;
+}
+
+
+.etuve-reservation{
+    padding-top: 8px;
+    padding-left : 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    font-size: 24px;
+    // width: 100px;
+    padding: 0px 8px;
+}
+
+.button{
+    padding: 0px 8px;
+    cursor: pointer;
+}
+
+// .button:hover{
+//     font-size: 22px;
+//     transition: all 0.2s ease-in-out;
+// }
+
+
+.etuve-label{
+    margin: 2px;
+    margin-left: 0px;
+    padding: 2px 5px;
+    border-radius: 15px;
+}
+
+
+.row-padding{
+    padding: 4px 10px;
+}
+
+.response-content{
+
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+
+}
+
+// .response-comment{
+
+//     // padding: 8px;
+
+//     display: flex;
+//     flex-direction: column;
+
+// }

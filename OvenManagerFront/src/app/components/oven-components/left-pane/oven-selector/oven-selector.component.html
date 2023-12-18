@@ -1,0 +1,78 @@
+
+
+<div class="height-selector">
+
+  <div class="oven-selector-header">
+    <ion-searchbar (ionInput)="handleInput($event)" ></ion-searchbar>
+  </div>
+
+  <div class="oven-list-selector">
+
+    <ion-row class="ovens-folder-label">
+      <ion-label class="site-label">Sonceboz</ion-label>
+    </ion-row>
+
+      <div *ngFor="let entity of results.ovensSBZ" >
+
+
+        <ion-row class="ovens-folder-label" *ngIf="entity.list.length > 0">
+          <ion-label class="entity-label">{{entity.key}}</ion-label>
+        </ion-row>
+  
+        <ion-card *ngFor="let oven of entity.list" class="oven-select" (click)="selectOven(oven, $event)">
+
+          <ion-row class="oven-content">
+            <div class="oven-color" [style.background]="oven.color"></div>
+  
+            <ion-label class="oven-name">{{oven.name}}</ion-label>
+          </ion-row>
+          
+          <!-- <ion-checkbox [(ngModel)]="oven.selected" (ionChange)="ovenSelectFilter(oven, $event)"></ion-checkbox> -->
+        </ion-card>
+      </div>
+
+      <ion-row class="ovens-folder-label">
+        <ion-label class="site-label">Boncourt</ion-label>
+      </ion-row>
+
+      <div *ngFor="let entity of results.ovensBCT">
+
+        <ion-row class="ovens-folder-label" *ngIf="entity.list.length > 0">
+          <ion-label class="entity-label">{{entity.key}}</ion-label>
+        </ion-row>
+  
+          <ion-card *ngFor="let oven of entity.list" class="oven-select" (click)="selectOven(oven, $event)">
+  
+            <ion-row class="oven-content">
+              <div class="oven-color" [style.background]="oven.color"></div>
+    
+              <ion-label class="oven-name">{{oven.name}}</ion-label>
+            </ion-row>
+            
+            <!-- <ion-checkbox class="filter-checkbox" [(ngModel)]="oven.selected" (ionChange)="ovenSelectFilter(oven, $event)"></ion-checkbox> -->
+          </ion-card>
+      </div>
+  </div>
+
+  <div *ngIf="user.admin" class="add-oven" (click)="addOven($event)">
+    <ion-icon name="add-circle" class="add-icon"></ion-icon>
+    <ion-label>Ajouter une étuve</ion-label>
+  </div>
+
+
+</div>
+
+
+<app-oven-select 
+  [ovenSelectModal]="ovenSelectModal" 
+  [oven]="ovenSelectModal.oven" 
+  [ovenFilters]="ovenFilters"
+  [admin]="ovenSelectModal.admin"
+
+  (requestOven)="askRequestOven($event)"
+  
+  
+  >
+</app-oven-select>
+
+<!-- <app-add-oven [ovenSelectModal]="ovenAddModal" [ovens]="ovens"></app-add-oven> -->

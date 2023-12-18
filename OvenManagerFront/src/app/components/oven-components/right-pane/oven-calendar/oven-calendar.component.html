@@ -1,0 +1,117 @@
+
+
+
+
+
+<div class="calendar-container">
+
+  <ion-row>
+
+    <ion-select [(ngModel)]="calendar.mode" label="Mode :" class="select-calendar-mode">
+      <ion-select-option value="day">day</ion-select-option>
+      <ion-select-option value="week">week</ion-select-option>
+      <ion-select-option value="month">month</ion-select-option>
+  
+    </ion-select>
+  
+    <ion-row class="month-row">
+      
+      <ion-button fill="icon-only" (click)="previous()">
+        <ion-icon name="arrow-back-outline" slot="icon-only" ></ion-icon>
+      </ion-button>
+  
+      <h2 class="calendar-title">{{viewTitle}}</h2>
+      
+      <ion-button fill="icon-only" (click)="next()">
+        <ion-icon name="arrow-forward-outline" slot="icon-only"></ion-icon>
+  
+      </ion-button>
+      
+    </ion-row>
+
+    <div class="egalize-header-size">
+
+    </div>
+
+  </ion-row>
+
+  
+
+<!-- <div class="calendar-style"> -->
+  <calendar  class="calendar-style" 
+
+  [eventSource]="reservations"
+
+  [startingDayMonth]="1"
+  [startingDayWeek]="1"
+
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+
+  (onEventSelected)="onEventSelected($event)"
+
+  [showEventDetail] = "false" 
+  
+  (onTitleChanged)="onViewTitleChanged($event)"  
+  [monthviewDisplayEventTemplate]="monthView"
+  [monthviewInactiveDisplayEventTemplate]="monthView"
+
+  [weekviewNormalEventTemplate]="weekView"
+  
+
+  [dayviewNormalEventTemplate]="weekView"
+  [dayviewAllDayEventTemplate]="weekView"
+
+
+  [markDisabled]="markDisabled">
+  </calendar>
+
+</div>
+
+<!-- </div> -->
+
+
+<ng-template #monthView let-view="view" let-row="row" let-col="col">
+  
+  <div [class.with-event]="view.dates[row*7+col].events.length" class="calendar-day" (click)="onDateClicked(view.dates[row*7+col].date)">
+    
+      {{view.dates[row*7+col].date | date:'d'}}
+      <!-- {{view.dates[row*7+col].events.length}} -->
+
+      <div *ngFor="let displayEvent of view.dates[row*7+col].events">
+
+          <div *ngIf="eventInFilter(displayEvent)" class="calendar-month-event" (click)="onEventSelected(displayEvent , $event)" 
+          [style.background]="displayEvent?.oven?.color || ''" [style.color]="contrastColor(displayEvent?.oven?.color)">
+            {{displayEvent?.oven.name}}
+          </div>
+    </div>
+  </div>
+
+</ng-template>
+
+
+<ng-template #weekView let-displayEvent="displayEvent">
+
+  <div *ngIf="eventInFilter(displayEvent.event)" class="week-event" 
+    [style.background]="displayEvent?.event.oven?.color || ''"
+    [style.color]="contrastColor(displayEvent?.event.oven?.color)">
+    
+    {{displayEvent.event.oven.name}}
+
+  </div>
+
+</ng-template>
+
+<!-- <ng-template #dayviewNormalEventTemplate let-displayEvent="displayEvent">
+
+  <div class="week-event" [style.background]="displayEvent?.event.oven?.color || ''"
+  [style.color]="contrastColor(displayEvent?.event.oven?.color)">
+    
+      {{displayEvent.event.title}}
+
+  </div>
+
+</ng-template> -->
+
+
+<app-event-select [eventSelectModal]="eventSelectModal" [event]="eventSelectModal.event" [admin]="eventSelectModal.admin"></app-event-select>

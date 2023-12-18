@@ -1,0 +1,43 @@
+
+
+
+.select-calendar-mode{
+    // margin-left: 16px;
+    // margin-right: 16px;
+    width: 120px;
+}
+
+.egalize-header-size{
+    width: 120px;
+}
+
+
+.month-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.calendar-title{
+    margin: 20px 32px;
+}
+
+.calendar-container{
+    height: 100%;
+    width: 100%;
+    display: block;
+    // flex-direction: column;
+}
+
+.month-row{
+    height: 10%;
+}
+
+.calendar-container calendar{
+    height: 80%;
+    display: block;
+
+}
+

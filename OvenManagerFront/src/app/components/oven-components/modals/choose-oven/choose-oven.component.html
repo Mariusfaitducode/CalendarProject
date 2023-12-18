@@ -1,0 +1,95 @@
+
+
+<ion-row (click)="setOpen()" class="select-oven">
+
+  <div *ngIf="!this.request?.oven">
+    Selectionner étuve
+  </div>  
+
+  <div *ngIf="this.request?.oven">
+    {{this.request.oven.name}}
+  </div>
+</ion-row>
+
+
+<ion-modal [isOpen]="chooseOvenModal.show" (willDismiss)="onWillDismiss()" style="--width: 450px; --height: 550px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-title >Choisir étuve</ion-title>
+
+
+        <ion-button fill="icon-only" slot="end" (click)="onClose()">
+          <ion-icon size="large"  name="close"></ion-icon>
+        </ion-button>
+        
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content class="oven-content">
+      <div class="ion-padding oven-infos">
+
+        
+
+        <ion-item>
+          <ion-input type="date" [(ngModel)]="request.startDate" (ionChange)="enabledOven()"></ion-input>  
+        </ion-item>
+        <ion-item>
+          <ion-input type="time" placeholder="Time" [(ngModel)]="request.startTime" (ionChange)="enabledOven()"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="number" placeholder="Durée (heures)" [(ngModel)]="request.duration" min="1" (ionChange)="enabledOven()"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="number" placeholder="Température min" [(ngModel)]="request.temperatureMin"></ion-input>
+          <ion-input type="number" placeholder="Température max" [(ngModel)]="request.temperatureMax"></ion-input>
+        </ion-item>
+
+
+        <div class="top-gap"></div>
+        <ion-label color="primary" class="floating-label">Etuves disponible {{label}}</ion-label>
+
+
+        <div *ngFor="let oven of ovenList">
+
+          <ion-row class="oven-item" (click)="selectOven(oven)">
+
+            <div class="oven-label">
+              <ion-label class="oven-name">{{oven.name}}</ion-label>
+              <ion-label class="oven-entity">{{oven.entity!.value}}</ion-label>
+            </div>
+            
+            <ion-icon class="valid-icon" *ngIf="oven === selectedOven" name="checkmark-circle-outline" color="success"></ion-icon>
+
+          </ion-row>
+
+        </div>
+
+        <!-- <div *ngIf="selectedOven">
+
+          <div class="top-gap"></div>
+          <ion-label color="primary" class="floating-label">Etuve séléctionnée</ion-label>
+
+          <ion-item class="oven-item selected">
+           
+            <ion-label>{{selectedOven.name}}</ion-label>
+            <ion-icon *ngIf="oven.selected" name="checkmark-circle-outline" color="success"></ion-icon>
+          </ion-item>
+
+        </div> -->
+
+        <!-- <ion-row class="infos-row">
+          <ion-label color="primary">Nombres de réservations trouvés : {{newFilter.list.length}}</ion-label>
+        </ion-row> -->
+
+      </div>
+
+      <ion-button (click)="chooseOven()" [disabled]="!canChooseOven()" expand="block" class="ion-padding choose-button">
+        Choisir
+      </ion-button>
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>

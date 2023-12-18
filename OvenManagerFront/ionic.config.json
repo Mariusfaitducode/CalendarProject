@@ -1,0 +1,7 @@
+{
+  "name": "OvenManager",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

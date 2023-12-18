@@ -1,0 +1,27 @@
+
+
+.infos-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+}
+
+// .infos-row ion-input{
+//     width: 50%;
+
+// }
+
+.oven-infos{
+    
+    margin-bottom: 12px;
+}
+
+.oven-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+}

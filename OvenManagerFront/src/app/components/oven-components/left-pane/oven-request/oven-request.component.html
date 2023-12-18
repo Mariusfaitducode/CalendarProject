@@ -1,0 +1,101 @@
+
+
+<div class="height-selector">
+
+  <div class="oven-request-title">
+    <ion-title>Demande utilisation étuves</ion-title>
+  </div>
+
+  <div class="oven-list-request">
+
+    <div class="oven-form-request">
+
+      <div *ngIf="user.admin" class="fast-form-toggle">
+        <ion-label>Ajout rapide</ion-label>
+        <ion-toggle [(ngModel)]="request.fastForm"></ion-toggle>
+      </div>
+
+      <div *ngIf="!request.fastForm">
+        <div class="top-gap"></div>
+        <ion-label color="primary" class="floating-label">Informations</ion-label>
+
+        <ion-item>
+          <ion-input type="text" label="Nom" [(ngModel)]="request.lastName" placeholder="Nom"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input type="text" label="Prénom" [(ngModel)]="request.firstName" placeholder="Prénom"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input type="text" label="Unité" [(ngModel)]="request.entity" placeholder="Unité"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-input type="text" label="Project" [(ngModel)]="request.project" placeholder="Project"></ion-input>
+        </ion-item>
+    
+        <ion-item class="description">
+          <ion-textarea fill="outline" label="Raison demande" [(ngModel)]="request.description" labelPlacement="floating" placeholder="Je souhaite utilisé tel étuve pour tel raison"></ion-textarea>
+        </ion-item>
+      </div>
+      
+  
+      <!-- <div class="add-request">
+        <ion-label>Nombres demande : {{request.length}}</ion-label>
+        <ion-button fill="icon-only" size="large"  (click)="addRequest()">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </div> -->
+      <div class="top-gap"></div>
+      <ion-label color="primary" class="floating-label">Réservation</ion-label>
+
+  
+      <ion-item>
+        <ion-input type="date" [(ngModel)]="request.startDate"></ion-input>  
+  
+      </ion-item>
+      <ion-item>
+        <ion-input type="time" placeholder="Time" [(ngModel)]="request.startTime"></ion-input>
+  
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Durée (heures)" [(ngModel)]="request.duration" min="1"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="user.admin">
+        <ion-select [(ngModel)]="request.test" placeholder="Selectionner test" label="Selectionner test">
+
+          <ion-select-option *ngFor="let test of tests" [value]="test" (ionChange)="setTemperature()">
+            {{test.name}} {{test.temperatureMin}}°C / {{test.temperatureMax}}°C
+          </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+      
+
+
+
+      <div *ngIf="!validDate()">
+        <ion-label color="danger" class="floating-label">{{this.invalidDateMessage}}</ion-label>
+      </div>
+
+      
+
+      <app-choose-oven [chooseOvenModal]="openModal" [request]="request" [ovens]="ovens"
+      ></app-choose-oven>
+    </div>
+
+    <div class="reservation-button">
+      <ion-button fill="outline" expand="block" 
+        [disabled]="!validRequest() || !validDate()" (click)="sendRequest()"
+      >Envoyer demande</ion-button>
+    </div>
+    
+  </div>
+</div>
+
+
+
+

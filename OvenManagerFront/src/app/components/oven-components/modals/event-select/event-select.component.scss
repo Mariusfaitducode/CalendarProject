@@ -1,0 +1,56 @@
+
+
+.oven-label-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    // padding-bottom: 0px;
+}
+
+
+.label-size{
+    font-size: 14px;
+}
+
+.floating-label{
+    font-size: 14px;
+    padding-left: 8px;
+    // margin-top: 24px;
+}
+
+
+
+.infos-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+}
+
+.padding-bottom{
+    padding-bottom: 24px;
+}
+
+.oven-infos{
+    // font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.oven-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 8px;
+}
+
+.etuve-label{
+    margin: 2px;
+    margin-left: 0px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    // cursor: pointer;
+}
