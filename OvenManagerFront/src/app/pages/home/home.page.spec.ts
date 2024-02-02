@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OvenPage } from './oven.page';
+import { OvenPage } from './home.page';
 
 describe('OvenPage', () => {
   let component: OvenPage;

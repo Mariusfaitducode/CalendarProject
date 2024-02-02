@@ -6,14 +6,14 @@
     <ion-searchbar (ionInput)="handleInput($event)" ></ion-searchbar>
   </div>
 
-  <div class="oven-list-selector">
 
+  Collection
+  <!-- <div class="oven-list-selector">
     <ion-row class="ovens-folder-label">
       <ion-label class="site-label">Sonceboz</ion-label>
     </ion-row>
 
       <div *ngFor="let entity of results.ovensSBZ" >
-
 
         <ion-row class="ovens-folder-label" *ngIf="entity.list.length > 0">
           <ion-label class="entity-label">{{entity.key}}</ion-label>
@@ -26,8 +26,6 @@
   
             <ion-label class="oven-name">{{oven.name}}</ion-label>
           </ion-row>
-          
-          <!-- <ion-checkbox [(ngModel)]="oven.selected" (ionChange)="ovenSelectFilter(oven, $event)"></ion-checkbox> -->
         </ion-card>
       </div>
 
@@ -48,15 +46,13 @@
     
               <ion-label class="oven-name">{{oven.name}}</ion-label>
             </ion-row>
-            
-            <!-- <ion-checkbox class="filter-checkbox" [(ngModel)]="oven.selected" (ionChange)="ovenSelectFilter(oven, $event)"></ion-checkbox> -->
           </ion-card>
       </div>
-  </div>
+  </div> -->
 
   <div *ngIf="user.admin" class="add-oven" (click)="addOven($event)">
     <ion-icon name="add-circle" class="add-icon"></ion-icon>
-    <ion-label>Ajouter une étuve</ion-label>
+    <ion-label>Ajouter un projet</ion-label>
   </div>
 
 

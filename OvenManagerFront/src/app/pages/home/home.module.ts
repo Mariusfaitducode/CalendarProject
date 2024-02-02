@@ -4,12 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { OvenPageRoutingModule } from './oven-routing.module';
+import { OvenPageRoutingModule } from './home-routing.module';
 
-import { OvenPage } from './oven.page';
+import { OvenPage } from './home.page';
 import { LeftPaneComponent } from 'src/app/components/oven-components/left-pane/left-pane.component';
 import { RightPaneComponent } from 'src/app/components/oven-components/right-pane/right-pane.component';
-import { OvenSelectorComponent } from 'src/app/components/oven-components/left-pane/oven-selector/oven-selector.component';
+import { CollectionComponent } from 'src/app/components/oven-components/left-pane/collection/collection.component';
 import { OvenCalendarComponent } from 'src/app/components/oven-components/right-pane/oven-calendar/oven-calendar.component';
 import { DaySelectComponent } from 'src/app/components/oven-components/modals/day-select/day-select.component';
 import { OvenSelectComponent } from 'src/app/components/oven-components/modals/oven-select/oven-select.component';
@@ -18,7 +18,7 @@ import { OvenRequestComponent } from 'src/app/components/oven-components/left-pa
 import { OvenGestionComponent } from 'src/app/components/oven-components/left-pane/oven-gestion/oven-gestion.component';
 import { EventSelectComponent } from 'src/app/components/oven-components/modals/event-select/event-select.component';
 
-import { NgCalendarModule } from '../../../components/oven-components/ionic-calendar';
+import { NgCalendarModule } from '../../components/oven-components/ionic-calendar';
 import { AddFilterComponent } from 'src/app/components/oven-components/modals/add-filter/add-filter.component';
 import { GestionRequestsComponent } from 'src/app/components/oven-components/left-pane/oven-gestion/gestion-requests/gestion-requests.component';
 import { GestionPlanningComponent } from 'src/app/components/oven-components/left-pane/oven-gestion/gestion-planning/gestion-planning.component';
@@ -39,7 +39,7 @@ import { ChooseOvenComponent } from 'src/app/components/oven-components/modals/c
   declarations: [OvenPage, 
     LeftPaneComponent, 
     RightPaneComponent,
-    OvenSelectorComponent,
+    CollectionComponent,
     OvenCalendarComponent,
     DaySelectComponent,
     OvenSelectComponent,

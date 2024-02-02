@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { OvenPage } from './oven.page';
+import { OvenPage } from './home.page';
 
 const routes: Routes = [
   {

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OvenSelectorComponent } from './oven-selector.component';
+import { CollectionComponent } from './collection.component';
 
 describe('OvenSelectorComponent', () => {
-  let component: OvenSelectorComponent;
-  let fixture: ComponentFixture<OvenSelectorComponent>;
+  let component: CollectionComponent;
+  let fixture: ComponentFixture<CollectionComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ OvenSelectorComponent ],
+      declarations: [ CollectionComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OvenSelectorComponent);
+    fixture = TestBed.createComponent(CollectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

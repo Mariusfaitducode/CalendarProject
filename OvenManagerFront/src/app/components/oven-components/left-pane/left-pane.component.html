@@ -2,7 +2,7 @@
 
 
 <div class="left-pane">
-  <div class="left-pane-width">
+  <!-- <div class="left-pane-width">
     <ion-toolbar>
       
       <ion-segment [(ngModel)]="leftPaneMode">
@@ -17,12 +17,12 @@
         </ion-segment-button>
 
       </ion-segment>
-    </ion-toolbar>
+    </ion-toolbar> -->
 
   
     <div class="left-pane-content">
-      <app-oven-selector 
-        *ngIf="leftPaneMode === 'select'" 
+      <app-collection 
+        
         class="height-selector" 
         [classifiedOvens]="classifiedOvens" 
         [results]="classifiedOvens" 
@@ -32,9 +32,9 @@
         
         (requestOven)="askRequestOven($event)"
         >
-      </app-oven-selector>
+      </app-collection>
     
-      <app-oven-request 
+      <!-- <app-oven-request 
         *ngIf="leftPaneMode === 'request'" 
         class="height-selector" 
         [ovens]="ovens" 
@@ -58,7 +58,7 @@
         [reservations]="reservations">
       </app-oven-gestion>
 
-    </div>
+    </div> -->
 
   </div>
   

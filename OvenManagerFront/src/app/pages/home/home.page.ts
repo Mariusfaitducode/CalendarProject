@@ -8,8 +8,8 @@ import { OvenService } from 'src/app/services/oven.service';
 
 @Component({
   selector: 'app-oven',
-  templateUrl: './oven.page.html',
-  styleUrls: ['./oven.page.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
 export class OvenPage implements OnInit {
 

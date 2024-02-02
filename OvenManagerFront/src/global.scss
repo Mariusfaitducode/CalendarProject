@@ -38,108 +38,59 @@
 }
 
 
-
 //CALENDAR 
 
 
-.calendar-style{
-    height : 90% !important;
-    display: block;
-    overflow-y: scroll;
-
-}
-
-.calendar-day{
-    height : 100% !important;
-    // height: 80px;
-    // height: calc(100% / 6);
-}
-
-.calendar-event{
-    margin: 2px;
-    padding: 3px;
-    border-radius: 15px;
-}
-
-.week-event{
+.monthview-current { 
+    background-color: var(--ion-background-color) !important; 
+  }
+  
+  .monthview-secondary-with-event { 
+    background-color: var(--ion-background-color) !important; 
+    opacity: 0.6;
+  }
+  
+  .monthview-primary-with-event { 
+    background-color: var(--ion-background-color) !important; 
+  }
+  
+  
+  .monthview-selected { 
+    background-color: var(--ion-color-light-gray) !important; 
+  }
+  
+  .monthview-disabled { 
+    opacity: 0.5 !important;
+  }
+  
+  
+  // week view
+  
+  .week-event{
     height: 100%;
     width: 100%;
-
-    // border-radius: 10px;
-}
-
-.monthview-container{
-    height : auto !important;
-    // overflow-y: scroll;
-
-    // border-bottom: 1px solid var(--ion-color-step-100)!important;
-    // border: none !important;   
-}
-
-.monthview-container monthview{
-    height : auto !important;
-    // border-bottom: 1px solid var(--ion-color-step-100)!important;
-    border: none !important;   
-}
-
-
-.monthview-current { 
-    background-color: var(--ion-color-step-200) !important; 
-}
-
-.monthview-secondary-with-event { 
-    // background-color: #FF9800 !important;
-    background-color: var(--ion-color-step-300) !important; 
-    // padding-top: 0px !important;
-    // padding-bottom: 0px !important;
-    opacity: 0.5;
-}
-
-.monthview-primary-with-event { 
-    // background-color: #FF9800 !important;
-    background-color: var(--ion-color-step-100) !important; 
-    // padding-top: 0px !important;
-    // padding-bottom: 0px !important;
-}
-
-
-.monthview-selected { 
-    // background-color: #FF5722 !important; 
-    background-color: var(--ion-color-step-600) !important; 
-    // color: red !important;
-    // padding-top: 0px !important;
-    // padding-bottom: 0px !important;
-}
-
-
-.monthview-disabled { 
-    opacity: 0.3 !important;
-}
-
-
-// .monthview-selected div{
-//     width: 35px;
-//     height: 35px;
-
-//     border-radius: 50%;
-//     border: 2px solid var(--ion-color-danger) !important;
-//     color: var(--ion-text-color) !important;
-
-//     // color: var(--ion-color-danger) !important;
-
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-
-// .monthview-current{
-//     background-color: var(--background) !important; 
-
-// }
-
-// .table-bordered, .th, thead, tr, td, th{
-//     border: 0px !important;
-// }
-
+  }
+  
+  .week-event:hover{
+    border : 4px solid var(--ion-color-medium);
+    margin : -2px;
+    cursor: pointer;
+  }
+  
+  .weekview-selected { 
+    background-color: var(--ion-color-light-gray) !important; 
+  }
+  
+  // forms
+  
+  .item-has-focus{
+    --highlight-background: var(--ion-color-primary) !important;
+  }
+  
+  
+  // ion-select
+  
+  ion-alert .alert-wrapper{
+    --max-width: 400px !important;
+    --width: 350px !important; 
+  }

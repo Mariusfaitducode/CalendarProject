@@ -3,11 +3,11 @@ import { ClassifiedOven, Oven } from 'src/app/models/oven/oven';
 import { OvenRequest, Reservation } from 'src/app/models/oven/reservation';
 
 @Component({
-  selector: 'app-oven-selector',
-  templateUrl: './oven-selector.component.html',
-  styleUrls: ['./oven-selector.component.scss'],
+  selector: 'app-collection',
+  templateUrl: './collection.component.html',
+  styleUrls: ['./collection.component.scss'],
 })
-export class OvenSelectorComponent  implements OnInit {
+export class CollectionComponent  implements OnInit {
 
   @Input() classifiedOvens : {ovensSBZ : ClassifiedOven[],
                              ovensBCT : ClassifiedOven[]} = {ovensSBZ : [], ovensBCT : []};

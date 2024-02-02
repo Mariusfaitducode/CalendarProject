@@ -3,7 +3,7 @@ import { CompleteFilter } from 'src/app/models/oven/filter';
 import { ClassifiedOven, Oven } from 'src/app/models/oven/oven';
 import { OvenRequest, Reservation } from 'src/app/models/oven/reservation';
 import { Test } from 'src/app/models/oven/test';
-import { OvenPage } from 'src/app/pages/oven-pages/oven/oven.page';
+import { OvenPage } from 'src/app/pages/home/home.page';
 import { OvenService } from 'src/app/services/oven.service';
 
 @Component({
